@@ -18,10 +18,12 @@ class Photo:
 
 class Slide:
     def __init__(self, photos):
-
         self.photos = photos
         self.tags = set(photos[0].tags)
         if len(photos) > 1:
+            if photos[0].orientation == 'H' or photos[1].orientation == 'H':
+                raise ValueError('Slides with 2 photos cannot contain a horizontal photo')
+
             self.tags = self.tags.union(photos[1].tags)
             self.id = (photos[0].id, photos[1].id)
         else:
@@ -53,6 +55,7 @@ class SlideShow:
         interest = 0
         for i in range(len(self.slides)-1):
             interest += calc_interest(self.slides[i], self.slides[i+1])
+        return interest
 
 if __name__ == "__main__":
-    N,  = io.read("a_example.txt")
+    pass

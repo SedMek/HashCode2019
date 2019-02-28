@@ -2,11 +2,11 @@ import classes as c
 
 PATH = 'input/'
 
+
 def read(filename):
     with open(PATH + filename) as f:
         content = f.readline()
         N = int(content.strip())
-
 
         content = f.readlines()
         photos = []
@@ -16,10 +16,11 @@ def read(filename):
             photos.append(photo)
         return photos
 
+
 if __name__ == "__main__":
     photos = read("a_example.txt")
-    s1 = c.Slide([photos[1]])
-    s2 = c.Slide([photos[2], photos[3]])
-    print(c.calc_interest(s1,s2))
-
-
+    s0 = c.Slide([photos[0]])
+    s1 = c.Slide([photos[3]])
+    s2 = c.Slide([photos[1], photos[2]])
+    show = c.SlideShow([s0, s1, s2], 0)
+    print(show.calc_interest())
