@@ -14,7 +14,7 @@ def read(filename):
             line = line.strip().split(" ")
             photo = c.Photo(line[0], line[2:])
             photos.append(photo)
-        return N, photos
+        return photos
 
 if __name__ == "__main__":
     print(read("a_example.txt"))
