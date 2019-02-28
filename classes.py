@@ -31,6 +31,9 @@ class Slide:
                 raise ValueError('Slides with 1 photo must contain 1 horizontal photo')
             self.id = (photos[0].id,)
 
+    def distance(self, slide):
+        return - calc_interest(self, slide)
+
     def __repr__(self):
         return "id= {}, tags= {}".format(self.id, self.tags)
 
