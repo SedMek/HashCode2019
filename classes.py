@@ -32,7 +32,7 @@ class Slide:
             self.id = (photos[0].id,)
 
     def distance(self, slide):
-        return - calc_interest(self, slide)
+        return - (calc_interest(self, slide) + 1)
 
     def __repr__(self):
         return "id= {}, tags= {}".format(self.id, self.tags)
