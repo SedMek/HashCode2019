@@ -20,7 +20,12 @@ class Slide:
             self.id = (photos[0].id,)
 
 def calc_interest(slide1, slide2):
-    pass
+    tags_s1 = slide1.tags
+    tags_s2 = slide2.tags
+    inter = len(tags_s1.intersection(tags_s2))
+    diff12 = len(tags_s1.difference(tags_s2))
+    diff21 = len(tags_s2.difference(tags_s1))
+    return min(inter, diff12, diff21)
 
 
 class SlideShow:
