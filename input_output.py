@@ -1,5 +1,6 @@
-PATH = 'input/'
+import classes as c
 
+PATH = 'input/'
 
 def read(filename):
     with open(PATH + filename) as f:
@@ -11,9 +12,7 @@ def read(filename):
         photos = []
         for line in content:
             line = line.strip().split(" ")
-            photo = dict()
-            photo['orientation'] = line[0]
-            photo['tags']=line[2:]
+            photo = c.Photo(line[0], line[2:])
             photos.append(photo)
         return N, photos
 

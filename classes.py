@@ -1,3 +1,5 @@
+import input_output as io
+
 class Photo:
     id_counter = 0
 
@@ -6,6 +8,12 @@ class Photo:
         Photo.id_counter += 1
         self.orientation = orientation
         self.tags = set(tags)
+
+    def __repr__(self):
+        return "id= {}, orientation= {}, tags= {}\n".format(self.id, self.orientation, self.tags)
+
+    def __str__(self):
+        return self.__repr__()
 
 
 class Slide:
@@ -18,6 +26,13 @@ class Slide:
             self.id = (photos[0].id, photos[1].id)
         else:
             self.id = (photos[0].id,)
+
+    def __repr__(self):
+        return "id= {}, orientation= {}, tags= {}".format(self.id, self.orientation, self.tags)
+
+    def __str__(self):
+        return self.__repr__()
+
 
 def calc_interest(slide1, slide2):
     tags_s1 = slide1.tags
@@ -38,3 +53,6 @@ class SlideShow:
         interest = 0
         for i in range(len(self.slides)-1):
             interest += calc_interest(self.slides[i], self.slides[i+1])
+
+if __name__ == "__main__":
+    N,  = io.read("a_example.txt")
