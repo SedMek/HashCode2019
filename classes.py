@@ -40,8 +40,20 @@ class Slide:
     def __str__(self):
         return self.__repr__()
 
+    def __add__(self, other):
+        return SlideShow([self, other])
+
+    def __len__(self):
+        return len(self.photos)
+
+    def distance(self, other):
+        return calc_interest(self, other)
+
 
 def calc_interest(slide1, slide2):
+    if isinstance(slide1, SlideShow):
+        slide1 = slide1.last_slide()
+        slide2 = slide2.first_slide()
     tags_s1 = slide1.tags
     tags_s2 = slide2.tags
     inter = len(tags_s1.intersection(tags_s2))
@@ -52,7 +64,10 @@ def calc_interest(slide1, slide2):
 
 class SlideShow:
 
-    def __init__(self,slides,id): # TODO Maybe remove id
+    def distance(self,other):
+        return calc_interest(self,other)
+
+    def __init__(self,slides,id=0): # TODO Maybe remove id
         self.id = id
         self.slides = slides # Slides is a list of Slide objects
 
@@ -61,6 +76,18 @@ class SlideShow:
         for i in range(len(self.slides)-1):
             interest += calc_interest(self.slides[i], self.slides[i+1])
         return interest
+
+    def __add__(self, other):
+        return self.slides.extend(other.slides)
+
+    def __len__(self):
+        return len(self.slides)
+
+    def first_slide(self):
+        return self.slides[0]
+
+    def last_slide(self):
+        return self.slides[-1]
 
 if __name__ == "__main__":
     pass
