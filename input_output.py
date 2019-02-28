@@ -17,5 +17,9 @@ def read(filename):
         return photos
 
 if __name__ == "__main__":
-    print(read("a_example.txt"))
+    photos = read("a_example.txt")
+    s1 = c.Slide([photos[1]])
+    s2 = c.Slide([photos[2], photos[3]])
+    print(c.calc_interest(s1,s2))
+
 

@@ -28,7 +28,7 @@ class Slide:
             self.id = (photos[0].id,)
 
     def __repr__(self):
-        return "id= {}, orientation= {}, tags= {}".format(self.id, self.orientation, self.tags)
+        return "id= {}, tags= {}".format(self.id, self.tags)
 
     def __str__(self):
         return self.__repr__()
