@@ -27,6 +27,8 @@ class Slide:
             self.tags = self.tags.union(photos[1].tags)
             self.id = (photos[0].id, photos[1].id)
         else:
+            if photos[0].orientation == 'V':
+                raise ValueError('Slides with 1 photo must contain 1 horizontal photo')
             self.id = (photos[0].id,)
 
     def __repr__(self):
