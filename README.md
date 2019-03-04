@@ -1,2 +1,2 @@
 # HashCode2019
-Repository of the winning team
+Our participatio nto the HashCode 2019 organised by Google and hosted by Kayrros
